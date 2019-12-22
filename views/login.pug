@@ -1,0 +1,16 @@
+extends layout.pug
+block content
+	h2.m-5 로그인
+	.container.border.p-5.mx-auto.w-50
+		h2.text-center IGAworks 면접과제 - 설문조사 플랫폼 어드민
+		div.w-50.mx-auto.mt-5
+			form(name="loginForm" method="post" action="/" onsubmit="adminLogin(this);")
+				div.d-flex.my-2
+					span.col-2 ID
+					input.col-10.form-control(type="text" name="loginid" id="loginid" placeholder="admin")
+				div.d-flex.my-2
+					span.col-2 PW
+					input.col-10.form-control(type="password" name="loginpw" id="loginpw" placeholder="0000")
+				div.text-center.mt-4
+					button.btn.btn-primary.ml-4(type="submit" style="width: 140px;") 로그인
+	script(src="/javascripts/login.js")

@@ -1,0 +1,24 @@
+extends ../layout.pug
+block content
+	include ../inc/header.pug
+	.container.mx-auto.mt-5
+		table.table.table-bordered
+			colgroup
+			thead
+				tr
+					th 설문지 이름
+					th 질문 갯수
+					th 설문지 수정
+					th 리포트
+					th 로그
+					th 설문지 배포
+			tbody
+				tr
+					td 테스트 설문지
+					td 3개
+					td 수정하기
+					td 리포트
+					td 참여자 로그
+					td 배포주소
+	script(src="/javascripts/main.js")
+					

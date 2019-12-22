@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "000000",
+    "database": "minkyung",
+    "host": "localhost",
+    "dialect": "mysql",
+    "operatorsAliases": true
+  },
+  "test": {
+    "username": "root",
+    "password": "000000",
+    "database": "minkyung",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "root",
+    "password": "000000",
+    "database": "minkyung",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  }
+}

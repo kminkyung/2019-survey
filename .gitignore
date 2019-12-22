@@ -1,0 +1,4 @@
+.vscode
+node_modules
+sequelize-conn.js
+mysql-conn.js
