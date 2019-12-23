@@ -14,7 +14,7 @@ block content
 							li.bg-light.text-primary.border.border-right-0.border-bottom-0.p-1.px-4 순서조정
 							li.bg-light.text-danger.border.p-1.px-4.border-bottom-0 삭제
 					.container.border
-						ul.row.p-3
+						ul.ask-form.row.p-3
 							li.col-2
 								span 질문내용
 							li.col-10
@@ -23,11 +23,12 @@ block content
 							li.col-2
 								label(for="answer") 답변형태
 							li.col-10
-								select.form-control.w-25(name="answer" id="answer")
-									option(value="alternative") Yes / No
+								select.form-control.w-25(name="selectOption" id="selectOption")
+									option(value="alt") Yes / No
 									option(value="one") 한 개 선택
-									option(value="multiple") 여러 개 선택
-						ul.row.p-3
+									option(value="multi") 여러 개 선택
+
+						ul.select-form-alt.row.p-3
 							li.col-2
 								span 선택항목
 							li.col-10
@@ -36,12 +37,13 @@ block content
 										tr.text-center
 											td.p-2 Yes
 											td.p-2
-												input.form-control(type="text" name="altyes" id="altyes" value="해본 적 있습니다.")
+												input.form-control(type="text" name="altYes" id="altYes" value="해본 적 있습니다.")
 										tr.text-center
 											td.p-2 No
 											td.p-2
-												input.form-control(type="text" name="altno" id="altno" value="아직 해보지 않았습니다.")
-						ul.row.p-3
+												input.form-control(type="text" name="altNo" id="altNo" value="아직 해보지 않았습니다.")
+
+						ul.select-form.row.p-3
 							li.col-2
 								span 선택항목
 							li.col-10
@@ -54,12 +56,18 @@ block content
 											td.p-2 1번
 											td.p-2
 												input.form-control(type="text" placeholder="ex) 팀장님이 하자고 합니다.")
-											td.p-2.text-danger 삭제
+											td.p-2
+												button.text-danger(type="reset") 삭제
 										tr.text-center
 											td.p-2 2번
 											td.p-2
 												input.form-control(type="text" placeholder="ex) 평소에 FPS게임을 많이 즐겼습니다.")
-											td.p-2.text-danger 삭제
-								button.btn.btn-primary 선택 항목 추가
+											td.p-2
+												button.text-danger(type="reset") 삭제
+								button.btn.btn-primary(type="button" id="btAddAnswer") 선택 항목 추가
+
+				li.text-center.my-4
+					button.btn.btn-primary(type="button" style="width: 200px;")
+						span + 질문 추가
 	script(src="/javascripts/main.js")
 					

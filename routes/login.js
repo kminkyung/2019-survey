@@ -32,7 +32,7 @@ function tryLogin(req, res, next) {
   let sqlvals = [];
   let obj = {};
   (async () => {
-    sql = 'SELECT * FROM surveyadmin WHERE adminID=? AND adminPW=?';
+    sql = 'SELECT * FROM surveyadmins WHERE adminID=? AND adminPW=?';
     sqlvals.push(adminid);
     sqlvals.push(adminpw);
     result = await sqlExec(sql, sqlvals);
@@ -56,13 +56,27 @@ function tryLogin(req, res, next) {
 
 /* Sequelize 구문 */
 /* async function tryLogin(req, res, next) {
+  let obj = {};
   let result = await AdminLogin.findAll({
     where : {
       adminID : req.body.loginid,
-      adminPW : req.body.loginpw
+      adminPW : req.body.loginpw,
+      grade : 1
     }
   });
-  if(result.length == 1) res.render('admin/main.pug');
+  console.log(AdminLogin);
+  if(result[0].length == 1) {
+    req.session.admin = {};
+    req.session.admin.id = result[0][0].adminID;
+    req.session.admin.grade = result[0][0].grade;
+    res.redirect('/admin');
+  }
+  else {
+    req.session.destroy();
+    obj.msg = '아이디 또는 패스워드가 일치하지 않습니다.'
+    obj.loc = '/';
+    res.send(util.alertLocation(obj));
+  }
 } */
 
 function trylogout(req, res, next) {

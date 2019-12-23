@@ -20,12 +20,12 @@ AdminLogin.init({
 	},
  }, {
 		sequelize,
-		modelName: "admins"
+		modelName: "surveyadmins"
 });
 
 // async() method를 최초 한번 실행하여 테이블이 생성되면 주석처리하여 더 이상 쓸 필요가 없다.
 (async () => {
-	const result = await AdminLogin.sync({force: false});
+	const result = await AdminLogin.sync({force: true});
 	AdminLogin.create({
 		adminID: "admin",
 		adminPW: "0000",
