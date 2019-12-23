@@ -1,4 +1,5 @@
 .vscode
 node_modules
+sessions
 sequelize-conn.js
 mysql-conn.js

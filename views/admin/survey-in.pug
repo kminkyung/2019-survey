@@ -1,24 +1,65 @@
 extends ../layout.pug
 block content
 	include ../inc/header.pug
-	.container.mx-auto.mt-5
-		table.table.table-bordered
-			colgroup
-			thead
-				tr
-					th 설문지 이름
-					th 질문 갯수
-					th 설문지 수정
-					th 리포트
-					th 로그
-					th 설문지 배포
-			tbody
-				tr
-					td 테스트 설문지
-					td 3개
-					td 수정하기
-					td 리포트
-					td 참여자 로그
-					td 배포주소
+	.container.mx-auto.mt-3.p-4.px-5
+		form(action="/admin/survey", method="post" name="newSurveyForm")
+			ul
+				li.mb-5
+					h3.mb-3 이름
+					input.form-control(type="text" name="name" placeholder="ex) IGAWorks 사격 동아리 설문조사")
+				li
+					h3 질문
+					div
+						ul.d-flex.justify-content-end
+							li.bg-light.text-primary.border.border-right-0.border-bottom-0.p-1.px-4 순서조정
+							li.bg-light.text-danger.border.p-1.px-4.border-bottom-0 삭제
+					.container.border
+						ul.row.p-3
+							li.col-2
+								span 질문내용
+							li.col-10
+								input.form-control(type="text" name="ask" placeholder="ex) 당신은 사격을 해보신 적이 있습니까?")
+						ul.row.p-3
+							li.col-2
+								label(for="answer") 답변형태
+							li.col-10
+								select.form-control.w-25(name="answer" id="answer")
+									option(value="alternative") Yes / No
+									option(value="one") 한 개 선택
+									option(value="multiple") 여러 개 선택
+						ul.row.p-3
+							li.col-2
+								span 선택항목
+							li.col-10
+								table.table-bordered.w-50
+									tbody
+										tr.text-center
+											td.p-2 Yes
+											td.p-2
+												input.form-control(type="text" name="altyes" id="altyes" value="해본 적 있습니다.")
+										tr.text-center
+											td.p-2 No
+											td.p-2
+												input.form-control(type="text" name="altno" id="altno" value="아직 해보지 않았습니다.")
+						ul.row.p-3
+							li.col-2
+								span 선택항목
+							li.col-10
+								table.table-bordered.w-75.mb-3
+									colgroup
+										col(width="10%")
+										col(width="80%")
+									tbody
+										tr.text-center
+											td.p-2 1번
+											td.p-2
+												input.form-control(type="text" placeholder="ex) 팀장님이 하자고 합니다.")
+											td.p-2.text-danger 삭제
+										tr.text-center
+											td.p-2 2번
+											td.p-2
+												input.form-control(type="text" placeholder="ex) 평소에 FPS게임을 많이 즐겼습니다.")
+											td.p-2.text-danger 삭제
+								button.btn.btn-primary 선택 항목 추가
 	script(src="/javascripts/main.js")
 					

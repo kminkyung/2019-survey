@@ -8,7 +8,18 @@
 					a.text-primary(href="/logout") 로그아웃
 	ul.d-flex.bg-light.p-3.justify-content-between.align-items-center
 		li.pt-2
-			ul.breadcrumb.bg-light.border.border-danger
-				li.breadcrumb-item 설문지 목록
+			ul.breadcrumb.bg-light.p-0
+				-if(paginationAdd) {
+					li.breadcrumb-item
+						a(href="/admin/li").text-primary= paginationList
+					li.breadcrumb-item= paginationAdd
+				-} else {
+					li= paginationList
+				-}
+				//- li.mr-2= paginationList
+				//- -if(paginationAdd) {
+				//- li= paginationAdd
+				//- -}
 		li
-			button.btn.btn-primary(style="width: 200px;") + 설문지추가
+			button.btn.btn-primary(style="width: 200px;")
+				a(href="/admin/in") + 설문지추가

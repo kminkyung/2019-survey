@@ -5,8 +5,6 @@ const router = express.Router();
 
 /* node_modules */
 const path = require('path');
-/* const session = require('express-session');
-const store = require("session-file-store")(session); */
 const { AdminLogin } = require('../model/AdminLogin');
 const util = require('../modules/util')
 const db = require('../modules/mysql-conn');
@@ -14,22 +12,10 @@ const sqlExec = db.sqlExec;
 
 /* global */
 
-
-
-/* app init */
-/* app.use(session({
-  secret: salt,
-	resave: false, 
-	saveUninitialized: true,
-	store: new store()
-}));   */
-
-
 /* Router */
 router.get('/', loginPage);
 router.get('/logout', trylogout)
 router.post('/', tryLogin);
-
 
 /* GET home page. */
 function loginPage(req, res, next) {
@@ -44,6 +30,7 @@ function tryLogin(req, res, next) {
   let result;
   let sql = '';
   let sqlvals = [];
+  let obj = {};
   (async () => {
     sql = 'SELECT * FROM surveyadmin WHERE adminID=? AND adminPW=?';
     sqlvals.push(adminid);
@@ -60,7 +47,9 @@ function tryLogin(req, res, next) {
     }
     else {
       req.session.destroy();
-      res.send(util.alertAdmin());
+      obj.msg = '아이디 또는 패스워드가 일치하지 않습니다.'
+      obj.loc = '/';
+      res.send(util.alertLocation(obj));
     }
   })();
 }

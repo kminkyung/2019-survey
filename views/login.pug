@@ -4,7 +4,7 @@ block content
 	.container.border.p-5.mx-auto.w-50
 		h2.text-center IGAworks 면접과제 - 설문조사 플랫폼 어드민
 		div.w-50.mx-auto.mt-5
-			form(name="loginForm" method="post" action="/" onsubmit="adminLogin(this);")
+			form(name="loginForm" method="post" action="/" onsubmit="return adminLogin(this);")
 				div.d-flex.my-2
 					span.col-2 ID
 					input.col-10.form-control(type="text" name="loginid" id="loginid" placeholder="admin")
